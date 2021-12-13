@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import App from './Components/App';
 import reportWebVitals from './reportWebVitals';
+import QuestionsComponent from './Components/Questions/QuestionsComponent';
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
+    <QuestionsComponent />
   </React.StrictMode>,
   document.getElementById('root')
 );
