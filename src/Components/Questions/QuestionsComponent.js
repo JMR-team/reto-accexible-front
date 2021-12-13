@@ -6,12 +6,14 @@ import { useEffect } from 'react';
 function QuestionsComponent() {
     const [questions, setQuestion] = useState([]);
 
-    useEffect(() => {
-        async function fetchData() {
-            let listaQuestions = await getQuestions();
-            setQuestion(listaQuestions);
-        }
-        fetchData();
+    useEffect(async () => {
+        // async function fetchData() {
+        //     let listaQuestions = await getQuestions();
+        //     setQuestion(listaQuestions);
+        // }
+        // fetchData();
+        let listaQuestions = await getQuestions();
+        setQuestion(listaQuestions);
     }, [])
 
     return (
