@@ -25,7 +25,7 @@ export default function ChatTestComponent(props) {
     useEffect(()=>{  // Logic to implement if the test is finished (chatting=false)
         if (!chatting){
             userAnswers.forEach(
-                ({message,timeDelay})=>console.log(`texto: "${message}" delay: ${timeDelay}`)
+                ({text,responseTime})=>console.log(`texto: "${text}" delay: ${responseTime}`)
             )
         }
     },[chatting])

@@ -12,8 +12,8 @@ class MessageParser {
       return
     }
     // Valid message, send it to the action provider that will render the next question
-    let timeDelay = (Date.now()-this.timeStamp)/1000;
-    this.actionProvider.handleUserMessageWithTiming(message,timeDelay);
+    let responseTime = (Date.now()-this.timeStamp)/1000;
+    this.actionProvider.handleUserMessageWithTiming(message,responseTime);
   }
   
 }

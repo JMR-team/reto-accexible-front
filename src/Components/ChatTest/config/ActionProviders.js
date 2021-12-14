@@ -42,10 +42,10 @@ class ActionProvider {
   }
 
 
-  handleUserMessageWithTiming (message,timeDelay) {
+  handleUserMessageWithTiming (message,responseTime) {
     // Use the state hook for updating the list of user answers with its timing
     this.setUserAnswers((userAnswers)=>{
-      return [...userAnswers,{message,timeDelay}]
+      return [...userAnswers,{text:message,responseTime:responseTime}]
     })
     
     if (this.state.questionIndex<=this.state.questionsArray.length-1){
