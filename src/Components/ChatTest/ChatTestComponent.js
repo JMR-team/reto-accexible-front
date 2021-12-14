@@ -3,41 +3,49 @@ import { useEffect, useState } from "react";
 import Chatbot from 'react-chatbot-kit'
 import 'react-chatbot-kit/build/main.css'
 import { createChatBotMessage } from "react-chatbot-kit";
+
 import ActionProvider from "./config/ActionProviders";
 import MessageParser from "./config/MessageParser";
+import inputValidator from "./config/validator";
+import './ChatTestComponent.css'
 
 export default function ChatTestComponent(props) {
 
     // State of the component
-    let [chatbotConfig, setChatbotConfig] = useState();
-    let [userAnswers,setUserAnswers] = useState([]);
+    let [chatbotConfig, setChatbotConfig]      = useState();
+    let [chatting,setChatting]                 = useState(true);
+    let [chatbotIsLoading,setChatbotIsLoading] = useState(true);
+    let [userAnswers,setUserAnswers]           = useState([]);
 
     // Effect Hooks
-    useEffect(initialChatbotConfig,[])
-    useEffect(()=>console.log('respuestas',userAnswers),[userAnswers]);
-    // useEffect(()=>{console.log(chatbotConfig)},[chatbotConfig]);
+    useEffect(initialChatbotConfig,[]) // Start the chatbot config after initial load of the component
 
+    // rendering of the component
     return (
-        <>
-            <h1>holi</h1>
-            {
-                chatbotConfig !=undefined ? 
-                <Chatbot
-                    placeholderText='.......'
-                    config={chatbotConfig}
-                    messageParser={MessageParser}
-                    actionProvider={ActionProvider}
-                    addUserAnswer={addUserAnswer}
-                /> :
-                <h1>Conversacion finalizada</h1>
-            }
-        </>
+        <section>
+            <div className="chatBotContainerDiv">
+                {
+                    ( !chatbotIsLoading && chatting) ? 
+                    <Chatbot
+                        placeholderText='. . . . .'
+                        headerText='acceXible chatbot'
+                        config={chatbotConfig}
+                        messageParser={MessageParser}
+                        actionProvider={ActionProvider}
+                        validator={inputValidator}
+                        setUserAnswers={setUserAnswers}
+                        setChatting={setChatting}
+                    /> :
+                    <p>Chat bot loading</p>
+                }
+            </div>
+        </section>
     )
 
-    function addUserAnswer(newAnswer){
-        setUserAnswers([...userAnswers,newAnswer])
-    }
+    // UTILITY / FUNCTIONALITY FUNCTIONS
 
+    // fetch the API for chatbot messages and use them for the
+    //  initial configuration of the chatbot.
     function initialChatbotConfig() {
         fetch('/api/chatbot-messages')
             .then(response=>{
@@ -69,10 +77,11 @@ export default function ChatTestComponent(props) {
                     )
                 config.state = state;
                 // Update the component state
-                setChatbotConfig({...config})
+                setChatbotConfig({...config});
+                setChatbotIsLoading(false);
             })
             .catch(err=>{
-                alert('error');
+                alert(`ERROR: code ${err.status}  (${err.statusText})`);
                 console.log(err);
             })
     }
