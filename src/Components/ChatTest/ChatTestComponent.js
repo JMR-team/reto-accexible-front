@@ -7,6 +7,8 @@ import { createChatBotMessage } from "react-chatbot-kit";
 import ActionProvider from "./config/ActionProviders";
 import MessageParser from "./config/MessageParser";
 import inputValidator from "./config/validator";
+import StartTestWidget from "./widgets/StartTestWidget";
+import EndTestWidget from "./widgets/EndTestWidget";
 import './ChatTestComponent.css'
 
 export default function ChatTestComponent(props) {
@@ -19,6 +21,14 @@ export default function ChatTestComponent(props) {
 
     // Effect Hooks
     useEffect(initialChatbotConfig,[]) // Start the chatbot config after initial load of the component
+
+    useEffect(()=>{  // Logic to implement if the test is finished (chatting=false)
+        if (!chatting){
+            userAnswers.forEach(
+                ({message,timeDelay})=>console.log(`texto: "${message}" delay: ${timeDelay}`)
+            )
+        }
+    },[chatting])
 
     // rendering of the component
     return (
@@ -54,19 +64,33 @@ export default function ChatTestComponent(props) {
             })
             .then(response=>{
                 // Configuration object of the chatbot
-                let config = {};
+                let config = {
+                    widgets:[
+                        {
+                            widgetName: 'start-test',
+                            widgetFunc: (props) => <StartTestWidget {...props} />,
+                            mapStateToProps: ['disableChatInput'],
+                        },
+                        {
+                            widgetName: 'end-test',
+                            widgetFunc: (props) => <EndTestWidget {...props} />,
+                            props: {setChatting:setChatting}
+                        },
+                    ]
+                };
                 // Initial messages
                 config.initialMessages = response
                     .filter(
                         item=>item.type==='greeting'
                     )
                     .map(
-                        item=>createChatBotMessage( item.text )
+                        item=>createChatBotMessage( item.text, {widget:'start-test'} )
                     )
                 // State of the chatbot
                 let state = {
                     timeStamp : Date.now(),
-                    questionIndex:0
+                    questionIndex:0,
+                    disableChatInput:true
                 }
                 state.questionsArray = response
                     .filter(

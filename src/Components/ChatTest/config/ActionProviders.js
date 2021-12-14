@@ -28,23 +28,27 @@ class ActionProvider {
     })
   }
 
+
+  handleEndOfChat() {
+    // Right after the questions end, disable the text input of the chat
+    document.querySelector('.react-chatbot-kit-chat-input').readOnly=true
+    this.setState(prevState=>({
+      ...prevState,
+      messages:[
+        ...prevState.messages,
+        this.createChatbotMessage('Gracias. Pulsa el botón para finalizar.',{widget:'end-test'})
+      ],
+    }))
+  }
+
+
   handleUserMessageWithTiming (message,timeDelay) {
-    // If the index of the question array is bigger or equal to the length, deactivate the chat
-    if (this.state.questionIndex >= this.state.questionsArray.length ){
-      this.setState(prevState=>({
-        ...prevState,
-        messages:[
-          ...prevState.messages,
-          this.createChatbotMessage('Gracias por tu colaboración. A continuación te pediremos tu email para enviarte los resultados del test.')
-        ],
-      }))
-      setTimeout( () => this.setChatting(false) , 2000 );
-      
-    } else {
-      // Use the state hook for updating the list of user answers with its timing
-      this.setUserAnswers((userAnswers)=>{
-        return [...userAnswers,{message,timeDelay}]
-      })
+    // Use the state hook for updating the list of user answers with its timing
+    this.setUserAnswers((userAnswers)=>{
+      return [...userAnswers,{message,timeDelay}]
+    })
+    
+    if (this.state.questionIndex<=this.state.questionsArray.length-1){
       // Use the chat state hook to print the following message and advance the question Index
       this.setState(prevState=>({
         ...prevState,
@@ -54,9 +58,10 @@ class ActionProvider {
         ],
         questionIndex:this.state.questionIndex + 1
       }))
+    } else {
+      this.handleEndOfChat()
     }
   }
-
 }
 
 export default ActionProvider;
