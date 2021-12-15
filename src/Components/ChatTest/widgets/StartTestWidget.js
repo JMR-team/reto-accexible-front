@@ -19,13 +19,11 @@ export default function StartTestWidget(props) {
 
     // handle start button click
     function onClickStartButton() {
+        document.querySelector('.react-chatbot-kit-chat-input').readOnly=false;
+        props.actionProvider.nextQuestion();
         props.setState(prevState=>{
-            document.querySelector('.react-chatbot-kit-chat-input').readOnly=false;
             return {
                 ...prevState,
-                messages: [
-                    ...prevState.messages, createChatBotMessage(prevState.questionsArray[0])
-                ],
                 disableChatInput:false
             }
         })

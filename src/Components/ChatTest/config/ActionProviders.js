@@ -9,6 +9,7 @@ class ActionProvider {
     this.setChatting         = rest.setChatting;
   }
 
+  // Handle a message that is not long enough
   handleShortMessage () {
     const infoMessages = [
       'Para que los resultados del test sean fiables necesito respuestas más largas.',
@@ -28,7 +29,21 @@ class ActionProvider {
     })
   }
 
+  // Handle the input of a valid message
+  handleUserMessageWithTiming (message,responseTime) {
+    // Use the state hook for updating the list of user answers with its timing
+    this.setUserAnswers((userAnswers)=>{
+      return [...userAnswers,{text:message,responseTime:responseTime}]
+    })
+    
+    if (this.state.questionIndex<=this.state.questionsArray.length-1){
+      this.nextQuestion()
+    } else {
+      this.handleEndOfChat()
+    }
+  }
 
+  // Handle the end of chat
   handleEndOfChat() {
     // Right after the questions end, disable the text input of the chat
     document.querySelector('.react-chatbot-kit-chat-input').readOnly=true
@@ -41,27 +56,22 @@ class ActionProvider {
     }))
   }
 
-
-  handleUserMessageWithTiming (message,responseTime) {
-    // Use the state hook for updating the list of user answers with its timing
-    this.setUserAnswers((userAnswers)=>{
-      return [...userAnswers,{text:message,responseTime:responseTime}]
-    })
-    
-    if (this.state.questionIndex<=this.state.questionsArray.length-1){
-      // Use the chat state hook to print the following message and advance the question Index
-      this.setState(prevState=>({
-        ...prevState,
-        messages:[
-          ...prevState.messages,
-          this.createChatbotMessage(this.state.questionsArray[this.state.questionIndex])
-        ],
-        questionIndex:this.state.questionIndex + 1
-      }))
-    } else {
-      this.handleEndOfChat()
-    }
+  // Use the chat state hook to print the following message and advance the question Index
+  nextQuestion(){
+    this.setState(
+      prevState=>{
+        return {
+          ...prevState,
+          messages:[
+            ...prevState.messages,
+            this.createChatbotMessage(this.state.questionsArray[this.state.questionIndex])
+          ],
+          questionIndex:this.state.questionIndex + 1
+        }
+      }
+    )
   }
+
 }
 
 export default ActionProvider;
