@@ -1,5 +1,6 @@
 import ChatTestComponent from "../ChatTest/ChatTestComponent";
 import QuestionsComponent from "../Questions/QuestionsComponent";
+import FormularioEnviarComponent from "../FormularioEnviar/FormularioEnviarComponent";
 
 import { useEffect, useState } from "react";
 
@@ -15,7 +16,7 @@ export default function Test(props) {
     let [parts,setParts] = useState({
         'test': <QuestionsComponent setActualPart={setActualPart} setResults={setResults} />,
         'chat': <ChatTestComponent  setActualPart={setActualPart} setResults={setResults} />,
-        'send-results': <h1>Test acabado</h1>
+        'send-results': <FormularioEnviarComponent results={results} />
     })
 
     useEffect(()=>{
