@@ -2,12 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './Components/App';
 import reportWebVitals from './reportWebVitals';
-import QuestionsComponent from './Components/Questions/QuestionsComponent';
+import Test from "./Components/Test/Test";
+
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
-    <QuestionsComponent />
+    <Test />
   </React.StrictMode>,
   document.getElementById('root')
 );
