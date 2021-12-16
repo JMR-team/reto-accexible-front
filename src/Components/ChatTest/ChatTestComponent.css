@@ -1,0 +1,33 @@
+.react-chatbot-kit-chat-header {
+    background-color: blue;
+    color: white;
+    box-shadow: 1px 1px 20px 10px black;
+}
+
+.react-chatbot-kit-chat-input-container {
+    box-shadow: -1px -1px 20px 10px black;
+}
+
+.react-chatbot-kit-chat-bot-avatar-container {
+    background-image: url('./assets/logo_accexible.png');
+    background-size: cover;
+    background-color: white;
+}
+
+
+.react-chatbot-kit-chat-bot-avatar-letter {
+    display: none;
+}
+
+.react-chatbot-kit-chat-container {
+    box-shadow: 10px 10px 20px black;
+    background-color: transparent;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.react-chatbot-kit-chat-inner-container {
+    background-image: url('./assets/accexible_background_pattern.jpeg');
+    background-size: cover;
+    border-radius: inherit;
+}
