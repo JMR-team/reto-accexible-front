@@ -24,9 +24,14 @@ export default function ChatTestComponent(props) {
 
     useEffect(()=>{  // Logic to implement if the test is finished (chatting=false)
         if (!chatting){
-            userAnswers.forEach(
-                ({text,responseTime})=>console.log(`texto: "${text}" delay: ${responseTime}`)
-            )
+            // send the text of the conversation with the chatbot to the Test parent component
+            props.setResults( prevState => {
+                return {
+                    ...prevState,
+                    chatBotAnswers:[...userAnswers]
+                }
+            })
+            props.setActualPart('send-results')
         }
     },[chatting])
 
@@ -46,7 +51,7 @@ export default function ChatTestComponent(props) {
                         setUserAnswers={setUserAnswers}
                         setChatting={setChatting}
                     /> :
-                    <p>Chat bot loading</p>
+                    <p>Chat bot loading</p> //Buen sitio para poner un loader
                 }
             </div>
         </section>
