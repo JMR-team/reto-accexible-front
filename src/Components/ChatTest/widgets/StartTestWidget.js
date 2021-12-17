@@ -10,8 +10,8 @@ export default function StartTestWidget(props) {
 
     // render a button that when clicked will start the test
     return (
-        <div>
-            <button onClick={ props.disableChatInput ? onClickStartButton : null}>
+        <div className="containerButton">
+            <button class="buttonTest" onClick={ props.disableChatInput ? onClickStartButton : null}>
                 Empezar test
             </button>
         </div>
