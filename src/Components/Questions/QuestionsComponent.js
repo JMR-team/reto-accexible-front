@@ -22,31 +22,40 @@ function QuestionsComponent(props) {
 
     return (
         <>
-            <div>
-                {questions.length > 0 && questionIndex < questions.length &&// comprobamos si questions tiene elementos dentro y si la variable questionIndex es menor que la longitud del array de questions
-                    <div>
-                        <label>{questions[questionIndex].question} </label>
-                        <br />
-                        {
-                            questions[questionIndex].answers.map(function (answerIndividual,index) {
-                                return (
-                                    <>
-                                        <button className={optionIsSelectedArray[index] ? "selected" : ""} onClick={() => selectAnswer(answerIndividual.text, answerIndividual.score,index)}>{answerIndividual.text} </button>
-                                        <br />
-                                    </>
-                                )
-                            })
-                        }
-                        <br />
-                        {//selectedAnswer != undefined &&
-                            <button onClick={ okButtonIsActive ? () => nextQuestion() : null}> ok </button>
-                        }
-                        {//selectedAnswer == undefined &&
-                            // <button disabled> Nok </button>
-                        }
+        
+            <div className="quiz-body">
+            {
+            questions.length > 0 && questionIndex < questions.length &&// comprobamos si questions tiene elementos dentro y si la variable questionIndex es menor que la longitud del array de questions
+                <div className="quiz-modal">
+                    <div className="quiz-modal-header">
+                        <label className="quiz-modal-title">{questions[questionIndex].question} </label>
                     </div>
-                }
+                    <br />
+                    {
+                    questions[questionIndex].answers.map(function (answerIndividual,index) {
+                        return (
+                            <>
+                                <button className={optionIsSelectedArray[index] ? "selected" : "quiz-modal-option"} onClick={() => selectAnswer(answerIndividual.text, answerIndividual.score,index)}>{answerIndividual.text} </button>
+                                <br />
+                            </>
+                            )
+                        })
+                    }
+                    <br />
+                    <div className="quiz-modal-footer">
+                        <div className="quiz-modal-progress-controls">
+                            <p className="quiz-modal-progress-current">{`${questionIndex <= questions.length - 1 ? questionIndex + 1 : ""} / ${questions.length}`}</p>
+                            <button className="quiz-modal-btn" onClick={ okButtonIsActive ? () => nextQuestion() : null}> Síguiente </button>
+                        </div>
+                    </div>
+                </div>
+            }
             </div>
+            <div class='main-inner-loading'>
+            <div class='bg'>
+                <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/mars_sunburst.png'/>
+            </div>
+        </div>
         </>
     );
     function selectAnswer(answer, score,index) {
