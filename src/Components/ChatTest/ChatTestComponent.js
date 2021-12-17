@@ -37,7 +37,7 @@ export default function ChatTestComponent(props) {
 
     // rendering of the component
     return (
-        <section>
+        <section className="containerDiv">
             <div className="chatBotContainerDiv">
                 {
                     ( !chatbotIsLoading && chatting) ? 
