@@ -1,14 +1,17 @@
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-export default function Login(props) {
+export default function Signup(props) {
   // Navigation hook
   let navigate = useNavigate();
 
   // State hooks
   let [token, setToken] = useState(localStorage.getItem("token"));
-  let [loginInput, setLoginInput] = useState({
+  let [submitIsActive, setSubmitIsActive] = useState(false);
+  let [signUpInput, setSignUpInput] = useState({
     email: "",
+    firstName: "",
+    lastName: "",
     password: "",
   });
 
@@ -16,37 +19,60 @@ export default function Login(props) {
   // When the token is changed to the value returned by the backend, save the token in the local storage and navigate to the user page.
   useEffect(() => {
     if (token != null) {
-        localStorage.setItem('token',token);
-        navigate('/user');
+      localStorage.setItem("token", token);
+      navigate("/");
     }
   }, [token]);
 
-  // render components
+  // Render components
   return (
     <section className="loginRegisterSection">
       <div className="loginRegisterContainer">
         <h2>Login</h2>
+        {/* Nombre y apellidos */}
         <div>
           <input
-            value={loginInput.email}
+            value={signUpInput.firstName}
             type="text"
-            placeholder="email"
+            placeholder="Nombre"
             onChange={(e) =>
-              setLoginInput({ ...loginInput, email: e.target.value })
+              setSignUpInput({ ...signUpInput, firstName: e.target.value })
             }
           />
         </div>
         <div>
           <input
-            value={loginInput.password}
+            value={signUpInput.lastName}
+            type="text"
+            placeholder="Apellidos"
+            onChange={(e) =>
+              setSignUpInput({ ...signUpInput, lastName: e.target.value })
+            }
+          />
+        </div>
+        {/* Email */}
+        <div>
+          <input
+            value={signUpInput.email}
+            type="email"
+            placeholder="Correo electrónico"
+            onChange={(e) =>
+              setSignUpInput({ ...signUpInput, email: e.target.value })
+            }
+          />
+        </div>
+        {/* password */}
+        <div>
+          <input
+            value={signUpInput.password}
             type="password"
             placeholder="password"
             onChange={(e) =>
-              setLoginInput({ ...loginInput, password: e.target.value })
+              setSignUpInput({ ...signUpInput, password: e.target.value })
             }
           />
         </div>
-        <button onClick={login}>Iniciar sesión</button>
+        <button onClick={register}>Registro</button>
       </div>
     </section>
   );
@@ -54,11 +80,11 @@ export default function Login(props) {
   // Functions
 
   // login to obtain a token for accesing user info
-  function login() {
-    fetch("/auth/login", {
+  function register() {
+    fetch("/auth/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(loginInput),
+      body: JSON.stringify(signUpInput),
     })
       .then((response) => {
         if (response.ok) {
