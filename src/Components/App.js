@@ -5,7 +5,7 @@ import {
     Route
 } from "react-router-dom";
 
-import Test from './Test/Test'
+import Test from '../Pages/Test/Test'
 
 
 

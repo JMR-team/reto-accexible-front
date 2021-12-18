@@ -1,6 +1,6 @@
-import ChatTestComponent from "../ChatTest/ChatTestComponent";
-import QuestionsComponent from "../Questions/QuestionsComponent";
-import FormularioEnviarComponent from "../FormularioEnviar/FormularioEnviarComponent";
+import ChatTestComponent from "../../Components/ChatTest/ChatTestComponent";
+import QuestionsComponent from "../../Components/Questions/QuestionsComponent";
+import FormularioEnviarComponent from "../../Components/FormularioEnviar/FormularioEnviarComponent";
 
 import { useState } from "react";
 
