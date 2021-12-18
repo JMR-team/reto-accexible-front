@@ -28,7 +28,7 @@ export default function Signup(props) {
   return (
     <section className="loginRegisterSection">
       <div className="loginRegisterContainer">
-        <h2>Login</h2>
+        <h2>Registrar nuevo usuario</h2>
         {/* Nombre y apellidos */}
         <div>
           <input

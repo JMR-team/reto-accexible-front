@@ -17,7 +17,7 @@ export default function Login(props) {
   useEffect(() => {
     if (token != null) {
         localStorage.setItem('token',token);
-        navigate('/user');
+        navigate('/');
     }
   }, [token]);
 
@@ -25,7 +25,7 @@ export default function Login(props) {
   return (
     <section className="loginRegisterSection">
       <div className="loginRegisterContainer">
-        <h2>Login</h2>
+        <h2>Iniciar sesión</h2>
         <div>
           <input
             value={loginInput.email}
