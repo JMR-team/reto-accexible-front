@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import "./Login.css"
 
 export default function Login(props) {
   // Navigation hook
@@ -25,9 +26,9 @@ export default function Login(props) {
   return (
     <section className="loginRegisterSection">
       <div className="loginRegisterContainer">
-        <h2>Iniciar sesión</h2>
-        <div>
-          <input
+        <h2>Iniciar Sesión</h2>
+        <div className="loginForm">
+          <input className="loginInput"
             value={loginInput.email}
             type="text"
             placeholder="email"
@@ -36,8 +37,8 @@ export default function Login(props) {
             }
           />
         </div>
-        <div>
-          <input
+        <div className="loginForm">
+          <input className="loginInput"
             value={loginInput.password}
             type="password"
             placeholder="password"
@@ -46,7 +47,9 @@ export default function Login(props) {
             }
           />
         </div>
-        <button onClick={login}>Iniciar sesión</button>
+        <div className="loginForm">
+          <button className="loginButton" onClick={login}>Iniciar sesión</button>
+        </div>
       </div>
     </section>
   );
