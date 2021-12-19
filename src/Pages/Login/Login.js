@@ -25,8 +25,8 @@ export default function Login(props) {
   // render components
   return (
     <section className="loginRegisterSection">
-      <div className="loginRegisterContainer">
-        <h2>Iniciar Sesión</h2>
+      <div className="loginRegisterContainer">  
+        <h2>Iniciar Sesión:</h2>
         <div className="loginForm">
           <input className="loginInput"
             value={loginInput.email}

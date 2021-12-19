@@ -1,6 +1,7 @@
 import ChatTestComponent from "../../Components/ChatTest/ChatTestComponent";
 import QuestionsComponent from "../../Components/Questions/QuestionsComponent";
 import FormularioEnviarComponent from "../../Components/FormularioEnviar/FormularioEnviarComponent";
+import EmailConfirmation from "../../Components/EmailConfirmation/EmailConfirmation";
 
 import { useState, useEffect } from "react";
 
@@ -43,8 +44,8 @@ export default function Test(props) {
     let parts = {
         'test': () => <QuestionsComponent setActualPart={setActualPart} setResults={setResults} />,
         'chat': () => <ChatTestComponent  setActualPart={setActualPart} setResults={setResults} />,
-        'send-results': () => <FormularioEnviarComponent results={results} />,
-        'confirm-results-send':()=> <h1>Los resultados han sido enviados exitosamente!</h1>,
+        'send-results': () => <FormularioEnviarComponent setActualPart={setActualPart} results={results} />,
+        'confirm-results-send':()=> <EmailConfirmation />,
     }
 
     // Variable that controls if the user is logged or not
