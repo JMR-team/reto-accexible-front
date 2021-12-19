@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import "./Signup.css"
 
 export default function Signup(props) {
   // Navigation hook
@@ -26,12 +27,12 @@ export default function Signup(props) {
 
   // Render components
   return (
-    <section className="loginRegisterSection">
-      <div className="loginRegisterContainer">
+    <section className="signRegisterSection">
+      <div className="signRegisterContainer">
         <h2>Registrar nuevo usuario</h2>
         {/* Nombre y apellidos */}
-        <div>
-          <input
+        <div className="signForm">
+          <input className="signInput"
             value={signUpInput.firstName}
             type="text"
             placeholder="Nombre"
@@ -40,8 +41,8 @@ export default function Signup(props) {
             }
           />
         </div>
-        <div>
-          <input
+        <div className="signForm">
+          <input className="signInput"
             value={signUpInput.lastName}
             type="text"
             placeholder="Apellidos"
@@ -51,8 +52,8 @@ export default function Signup(props) {
           />
         </div>
         {/* Email */}
-        <div>
-          <input
+        <div className="signForm">
+          <input className="signInput"
             value={signUpInput.email}
             type="email"
             placeholder="Correo electrónico"
@@ -62,8 +63,8 @@ export default function Signup(props) {
           />
         </div>
         {/* password */}
-        <div>
-          <input
+        <div className="signForm">
+          <input className="signInput"
             value={signUpInput.password}
             type="password"
             placeholder="password"
@@ -72,7 +73,9 @@ export default function Signup(props) {
             }
           />
         </div>
-        <button onClick={register}>Registro</button>
+        <div className="signForm">
+          <button className="signButton" onClick={register}>Registro</button>
+        </div>
       </div>
     </section>
   );
