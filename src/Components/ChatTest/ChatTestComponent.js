@@ -31,7 +31,6 @@ export default function ChatTestComponent(props) {
                     chatBotAnswers:[...userAnswers]
                 }
             })
-            props.setActualPart('send-results')
         }
     },[chatting])
 
