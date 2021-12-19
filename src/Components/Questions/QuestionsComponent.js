@@ -52,10 +52,10 @@ function QuestionsComponent(props) {
             }
             </div>
             <div class='main-inner-loading'>
-            <div class='bg'>
-                <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/mars_sunburst.png'/>
+                <div class='bg'>
+                    <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/mars_sunburst.png'/>
+                </div>
             </div>
-        </div>
         </>
     );
     function selectAnswer(answer, score,index) {
