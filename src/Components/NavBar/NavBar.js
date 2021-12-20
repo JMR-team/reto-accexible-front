@@ -1,35 +1,36 @@
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { NavLink, Link } from "react-router-dom";
+import { MenuList } from "./MenuList";
 import "./NavBar.css";
 
-export default function NavBar() {
+export default function Navbar (){
+  const [clicked, setClicked] = useState(false);
+  const menuList = MenuList.map(({ url, title }, index) => {
+    return (
+      <li key={index}>
+        <NavLink exact to={url} activeClassName="active">
+          {title}
+        </NavLink>
+      </li>
+    );
+  });
+
+  const handleClick = () => {
+    setClicked(!clicked);
+  };
+
   return (
-    <div className="top">
-      <div className="topLeft">
-        <span className="topListItem">
-            <Link className="link" to="/">
-                <img src="https://accexible.com/static/media/accexible_logo.42a306b1.png" alt="logo AcceXible"/>
-            </Link>
-        </span>
+    <nav>
+      <div className="logo">
+        <Link className="link" to="/">
+          <img src="https://accexible.com/static/media/accexible_logo.42a306b1.png" alt="logo AcceXible"/>
+        </Link>
       </div>
-      <div className="topCenter">
-        <ul className="topList">
-        <li className="topListItem">
-            <Link className="link" to="/test-ansiedad">
-              Iniciar Test
-            </Link>
-          </li>
-          <li className="topListItem">
-            <Link className="link" to="/login">
-              Inicio Sesión
-            </Link>
-          </li>
-          <li className="topListItem">
-            <Link className="link" to="/signup">
-              Registro
-            </Link>
-          </li>
-        </ul>
+      <div className="menu-icon" onClick={handleClick}>
+        <i className={clicked ? "fas fa-times" : "fas fa-bars"}></i>
       </div>
-    </div>
+      <ul className={clicked ? "menu-list" : "menu-list close"}>{menuList}</ul>
+    </nav>
   );
-}
+};
+

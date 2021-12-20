@@ -19,12 +19,21 @@ function FormularioEnviarComponent(props) {
 
     return (
         <>
-            <div>
-                <input type="email" placeholder='Email' onChange={cambiarEmail} />
-                <br />
-                <input type="text" placeholder='Nombre' onChange={cambiarFirstName} />
-                <button onClick={() => EnviarEmail()} >Enviar</button>
+        <section className="formSection">
+            <div className="formContainer">
+            <h2>Formulario</h2>
+                <div className="loginForm">
+                    <input className="loginInput" type="email" placeholder='Email' onChange={cambiarEmail} />
+                    <br />
+                </div>
+                <div className="loginForm">
+                    <input className="loginInput" type="text" placeholder='Nombre' onChange={cambiarFirstName} />
+                </div>
+                <div className="loginForm">
+                    <button className="loginButton" onClick={() => EnviarEmail()} >Enviar</button>
+                </div>
             </div>
+        </section>
         </>
     )
 
