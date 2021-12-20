@@ -50,6 +50,10 @@ function FormularioEnviarComponent(props) {
                 email: email
             })
         })
+            .then(response => {
+                if (!response.ok) throw response
+                props.setActualPart("confirm-results-send");
+            })
     }
 
 
