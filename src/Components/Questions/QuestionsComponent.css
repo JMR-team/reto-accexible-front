@@ -1,21 +1,24 @@
 .quiz-body {
-    height: calc(100vh - 80px);
+    height: calc(100vh - 50px);
     display: flex;
     justify-content: center;
     align-items: center;
     color: #e0e0e0;
     overflow-y: hidden;
+    background-image: url(../ChatTest/assets/accexible_background_pattern.jpeg);
+    background-size: cover;
   }
   @media (max-width: 767px) {
     .quiz-body {
+      height: 100vh;
       padding-left: 24px;
       padding-right: 24px;
     }
   }
 
 .quiz-modal {
-  border: 3px solid white;
-  background-color: rgb(5, 0, 51);
+  border: 3px solid #fff;
+  background-color: #4D60C0;
   counter-reset: count;
   width: 700px;
   margin: 0 auto;
@@ -47,46 +50,35 @@
 
   .quiz-modal-title {
     font-family: "Roboto Condensed", sans-serif;
-    border-bottom: 2px solid white;
+    border-bottom: 2px solid #fff;
     width: 800px;
     text-align: center;
     padding: 10px 0;
-    font-weight: bold;
-    color: white;
+    font-weight: 600;
+    color: #fff;
     font-size: 20px;
   }
 
-  .quiz-modal-body {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-gap: 1rem;
-    padding: 4rem 3.5rem;
-    flex-grow: 1;
-  }
-  
-  @media (max-width: 767px) {
-    .quiz-modal-body {
-      grid-template-columns: 1fr;
-      padding: 1.5rem 1.25rem;
-    }
-  }
-
   .quiz-modal-option {
-    font-weight: bold;
-    background-color: rgb(18, 21, 64);
+    font-weight: 500;
+    background-color: #616EC8;
     clear: both;
     position: relative;
     cursor: pointer;
     padding: 12px 30px;
-    border: 3px solid white;
+    border: 3px solid #fff;
     left: 0;
     margin: 0 auto;
     margin-top: 35px;
-    color: white;
+    color: #fff;
     transition: all 0.3s;
     font-size: 16px;
     transform: skew(-8deg);
     width: 250px;
+  }
+
+  .quiz-modal-option:hover {
+    background-color: rgb(18, 21, 64);
   }
 
   .selected {
@@ -96,11 +88,11 @@
     position: relative;
     cursor: pointer;
     padding: 12px 30px;
-    border: 3px solid white;
+    border: 3px solid #fff;
     left: 0;
     margin: 0 auto;
     margin-top: 35px;
-    color: white;
+    color: #fff;
     transition: all 0.3s;
     font-size: 16px;
     transform: skew(-8deg);
@@ -112,9 +104,8 @@
     box-shadow: 0 -6px 0 #d0dfec inset;
     position: absolute;
     content: counter(count);
-    counter-increment: count;
-    
-    background: white;
+    counter-increment: count; 
+    background: #fff;
     color: rgba(0, 0, 0, 0.5);
     width: 40px;
     line-height: 41px;
@@ -133,8 +124,7 @@
     position: absolute;
     content: counter(count);
     counter-increment: count;
-    
-    background: white;
+    background: #fff;
     color: rgba(0, 0, 0, 0.5);
     width: 40px;
     line-height: 41px;
@@ -196,56 +186,3 @@
     font-size: 1rem;
     transition: 0.3s all;
   }
-
-.main-inner-loading {
-    position: fixed;
-    height: 100vh;
-    width: 100%;
-    background: rgb(5, 0, 51) none repeat scroll 0% 0%;
-    left: 0;
-    top: 0;
-    z-index: 1;
-    background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/ptp_grain.png"), -webkit-radial-gradient(center, ellipse cover, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.25) 100%);
-  }
-
-  .main-inner-loading .bg {
-    height: 100vh;
-    width: 900px;
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin: auto;
-    animation: spin 50s linear infinite;
-  }
-
-  @media only screen and (max-width: 650px) {
-    .main-inner-loading .bg {
-      width: 100%;
-    }
-  }
-
-   .main-inner-loading .bg img {
-    width: 900px;
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin: auto;
-    top: 50%;
-    transform: translateY(-50%) rotate(0deg);
-  }
-  @media only screen and (max-width: 650px) {
-    .main-inner-loading .bg img {
-      width: 100%;
-    }
-  }
-
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-
-

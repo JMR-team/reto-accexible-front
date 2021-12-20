@@ -1,5 +1,6 @@
 .loginRegisterSection {
-    background-color: #616EC8;
+    background-image: url("../../Components/ChatTest/assets/accexible_background_pattern.jpeg");
+    background-size: cover;
 }
 
 .loginRegisterContainer {
@@ -8,6 +9,12 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+@media (max-width: 767px) {
+    .loginRegisterContainer {
+        height: 100vh;
+    }
 }
 
 .loginRegisterContainer h2 {
@@ -38,9 +45,11 @@
 .loginButton {
     margin-top: 20px;
     cursor: pointer;
-    background-color: #2d42af;
+    background-color: #fff;
+    text-transform: uppercase;
+    font-weight: 500;
     border: none;
-    color: #fff;
+    color: #2d42af;
     border-radius: 10px;
     padding: 10px;
 }
@@ -48,5 +57,9 @@
 .loginButton:disabled{
     background-color: grey;
     cursor: not-allowed;
+}
+.loginButton:hover {
+    background-color: #2d42af;
+    color: #fff;
 }
 

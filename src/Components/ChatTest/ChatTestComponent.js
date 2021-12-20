@@ -50,7 +50,7 @@ export default function ChatTestComponent(props) {
                         setUserAnswers={setUserAnswers}
                         setChatting={setChatting}
                     /> :
-                    <p>Chat bot loading</p> //Buen sitio para poner un loader
+                    <p className="chatText">Cargando ChatBot</p> //Buen sitio para poner un loader
                 }
             </div>
         </section>
