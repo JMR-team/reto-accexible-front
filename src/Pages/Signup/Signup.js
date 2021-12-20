@@ -1,5 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+
+import * as EmailValidator from "email-validator";
+
 import "./Signup.css"
 
 export default function Signup(props) {
@@ -15,8 +18,12 @@ export default function Signup(props) {
     lastName: "",
     password: "",
   });
+  let [submitButtonIsActive, setSubmitButtonIsActive] = useState(false);
+  let [emailInputCorrect, setEmailInputCorrect] = useState(true);
+  let [signupFailed, setSignupFailed] = useState(false);
 
   // Effect hooks
+
   // When the token is changed to the value returned by the backend, save the token in the local storage and navigate to the user page.
   useEffect(() => {
     if (token != null) {
@@ -25,6 +32,11 @@ export default function Signup(props) {
     }
   }, [token]);
 
+  // Effect hook that will listen to changes in the form data
+  useEffect(() => {
+    setSubmitButtonIsActive(validateForm());
+  }, [signUpInput]);
+
   // Render components
   return (
     <section className="signRegisterSection">
@@ -32,7 +44,8 @@ export default function Signup(props) {
         <h2>Registrar nuevo usuario:</h2>
         {/* Nombre y apellidos */}
         <div className="signForm">
-          <input className="signInput"
+          <input
+            className="signInput"
             value={signUpInput.firstName}
             type="text"
             placeholder="Nombre"
@@ -42,7 +55,8 @@ export default function Signup(props) {
           />
         </div>
         <div className="signForm">
-          <input className="signInput"
+          <input
+            className="signInput"
             value={signUpInput.lastName}
             type="text"
             placeholder="Apellidos"
@@ -53,36 +67,57 @@ export default function Signup(props) {
         </div>
         {/* Email */}
         <div className="signForm">
-          <input className="signInput"
+          <input
+            className="signInput"
             value={signUpInput.email}
             type="email"
             placeholder="Correo electrónico"
-            onChange={(e) =>
-              setSignUpInput({ ...signUpInput, email: e.target.value })
-            }
+            onChange={(e) => {
+              setSignUpInput({ ...signUpInput, email: e.target.value });
+              emailInputCheck(e);
+            }}
           />
+          {emailInputCorrect ? null : (
+            <p>
+              <small>Formato de correo electrónico incorrecto</small>
+            </p>
+          )}
         </div>
         {/* password */}
         <div className="signForm">
-          <input className="signInput"
+          <input
+            className="signInput"
             value={signUpInput.password}
             type="password"
-            placeholder="password"
+            placeholder="contraseña"
             onChange={(e) =>
               setSignUpInput({ ...signUpInput, password: e.target.value })
             }
           />
         </div>
         <div className="signForm">
-          <button className="signButton" onClick={register}>Registro</button>
+          <button
+            className="signButton"
+            disabled={!submitButtonIsActive}
+            onClick={register}
+          >
+            Registro
+          </button>
         </div>
+        {signupFailed ? (
+          <p>
+            <small>
+              La dirección de correo ya está siendo usada por otro usuario.
+            </small>
+          </p>
+        ) : null}
       </div>
     </section>
   );
 
   // Functions
 
-  // login to obtain a token for accesing user info
+  // Register and login to obtain a token for accesing user info
   function register() {
     fetch("/auth/signup", {
       method: "POST",
@@ -100,9 +135,24 @@ export default function Signup(props) {
         // set the token in the state of the page
         setToken(data.token);
       })
-      .catch((err) => {
-        // console.log(err);
-        err.json().then(console.log);
+      .catch((response) => {
+        setSignupFailed(true);
       });
+  }
+
+  // Function to check the email format
+  function emailInputCheck(event) {
+    let email = event.target.value;
+    setEmailInputCorrect(EmailValidator.validate(email));
+  }
+
+  // Validate the form data
+  function validateForm() {
+    return (
+      EmailValidator.validate(signUpInput.email) &&
+      signUpInput.password.length > 0 &&
+      signUpInput.firstName.length > 0 &&
+      signUpInput.lastName.length > 0
+    );
   }
 }
