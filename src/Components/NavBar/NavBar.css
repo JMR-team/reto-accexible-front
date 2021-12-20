@@ -4,7 +4,9 @@ nav {
   padding: 0 20px;
   display: flex;
   justify-content: space-between;
-  position: relative;
+  position: fixed;
+  width: 100%;
+  top: 0;
   z-index: 5;
 }
 
@@ -74,11 +76,11 @@ nav {
     margin: auto 0;
   }
   .menu-list {
+    position: fixed;
     flex-direction: column;
     justify-content: center;
     width: 100vw;
     height: 100vh;
-    position: absolute;
     background: #fff;
     overflow-x: hidden;
     right: 0;

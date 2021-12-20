@@ -10,13 +10,6 @@
     align-items: center;
     justify-content: center;
 }
-
-@media (max-width: 767px) {
-    .signRegisterContainer {
-        height: 100vh;
-    }
-}
-
 .signRegisterContainer h2 {
     color: #fff;
     font-size: 30px;

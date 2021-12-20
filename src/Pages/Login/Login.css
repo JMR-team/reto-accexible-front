@@ -11,12 +11,6 @@
     justify-content: center;
 }
 
-@media (max-width: 767px) {
-    .loginRegisterContainer {
-        height: 100vh;
-    }
-}
-
 .loginRegisterContainer h2 {
     color: #fff;
     font-size: 30px;
