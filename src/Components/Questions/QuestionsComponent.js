@@ -22,7 +22,6 @@ function QuestionsComponent(props) {
 
     return (
         <>
-        
             <div className="quiz-body">
             {
             questions.length > 0 && questionIndex < questions.length &&// comprobamos si questions tiene elementos dentro y si la variable questionIndex es menor que la longitud del array de questions
@@ -50,11 +49,6 @@ function QuestionsComponent(props) {
                     </div>
                 </div>
             }
-            </div>
-            <div class='main-inner-loading'>
-                <div class='bg'>
-                    <img src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/217233/mars_sunburst.png'/>
-                </div>
             </div>
         </>
     );

@@ -19,23 +19,21 @@ function FormularioEnviarComponent(props) {
 
     return (
         <>
-            <section className="formularioSection">
-                <div className="formularioContainer">
-                    <h2>Para recibir sus resultados por favor rellene los campos que aparecen a continuación:</h2>
-                    <div className='formularioCampos'>
-                        <input className='formularioInput' type="email" placeholder='Email' onChange={cambiarEmail} />
-
-                    </div>
+        <section className="formSection">
+            <div className="formContainer">
+            <h2>Formulario</h2>
+                <div className="loginForm">
+                    <input className="loginInput" type="email" placeholder='Email' onChange={cambiarEmail} />
                     <br />
-                    <div className='formularioCampos'>
-                        <input className='formularioInput' type="text" placeholder='Nombre' onChange={cambiarFirstName} />
-
-                    </div>
-                <div className='formularioCampos'>
-                    <button className='formularioButton' onClick={() => EnviarEmail()} >Enviar</button>
-                    </div>
                 </div>
-            </section>
+                <div className="loginForm">
+                    <input className="loginInput" type="text" placeholder='Nombre' onChange={cambiarFirstName} />
+                </div>
+                <div className="loginForm">
+                    <button className="loginButton" onClick={() => EnviarEmail()} >Enviar</button>
+                </div>
+            </div>
+        </section>
         </>
     )
 

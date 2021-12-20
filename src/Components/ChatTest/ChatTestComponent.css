@@ -1,14 +1,16 @@
 .containerDiv {
-    height: 100vh;
+    height: calc(100vh - 55px);
     display: flex;
     justify-content: center;
     align-items: center;
-    
+    background-image: url('./assets/accexible_background_pattern.jpeg');
+    background-size: cover;
 }
-/* .chatBotContainerDiv {
-    
-    
-} */
+
+.chatText {
+    color: #fff;
+    font-size: 2rem;
+}
 
 .containerButton {
     width: 100%;
@@ -34,12 +36,7 @@
     background-image: url('./assets/accexible_background_pattern.jpeg');
     background-size: cover;
     color: white;
-    /* box-shadow: 1px 1px 20px 10px black; */
 }
-
-/* .react-chatbot-kit-chat-input-container {
-    box-shadow: -1px -1px 20px 10px black;
-} */
 
 .react-chatbot-kit-chat-bot-avatar-container {
     background-image: url('./assets/logo_accexible.png');
@@ -52,6 +49,11 @@
     height: 60px;
 }
 
+.react-chatbot-kit-user-avatar-container {
+    width: 60px;
+    height: 60px;
+}
+
 .react-chatbot-kit-chat-bot-message {
     background-color: #fff;
     color: rgb(18, 21, 64);
@@ -59,6 +61,11 @@
 }
 
 .react-chatbot-kit-chat-bot-message-arrow {
+    border-right: 8px solid #fff;
+    top: 23px;
+}
+
+.react-chatbot-kit-user-message-arrow {
     border-right: 8px solid #fff;
     top: 23px;
 }
