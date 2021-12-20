@@ -1,5 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+
+import * as EmailValidator from "email-validator";
+
 import "./Login.css"
 
 export default function Login(props) {
@@ -12,8 +15,12 @@ export default function Login(props) {
     email: "",
     password: "",
   });
+  let [submitButtonIsActive, setSubmitButtonIsActive] = useState(false);
+  let [emailInputCorrect,setEmailInputCorrect] = useState(true);
+  let [loginFailed,setLoginFailed] = useState(false);
 
   // Effect hooks
+
   // When the token is changed to the value returned by the backend, save the token in the local storage and navigate to the user page.
   useEffect(() => {
     if (token != null) {
@@ -21,6 +28,11 @@ export default function Login(props) {
         navigate('/');
     }
   }, [token]);
+
+  // Effect hook that will listen to changes in the form data
+  useEffect(()=>{
+    setSubmitButtonIsActive(validateForm())
+  },[loginInput])
 
   // render components
   return (
@@ -31,25 +43,29 @@ export default function Login(props) {
           <input className="loginInput"
             value={loginInput.email}
             type="text"
-            placeholder="email"
-            onChange={(e) =>
-              setLoginInput({ ...loginInput, email: e.target.value })
-            }
+            placeholder="correo electrónico"
+            onChange={(e) =>{
+              emailInputCheck(e);
+              setLoginInput({ ...loginInput, email: e.target.value });
+            }}
           />
+          {emailInputCorrect ? null : <p><small>Formato de correo electrónico incorrecto</small></p>}
         </div>
         <div className="loginForm">
           <input className="loginInput"
             value={loginInput.password}
             type="password"
-            placeholder="password"
+            placeholder="contraseña"
             onChange={(e) =>
               setLoginInput({ ...loginInput, password: e.target.value })
             }
           />
+          <p><small></small></p>
         </div>
         <div className="loginForm">
-          <button className="loginButton" onClick={login}>Iniciar sesión</button>
+          <button className="loginButton" disabled={!submitButtonIsActive} onClick={login}>Iniciar sesión</button>
         </div>
+        {loginFailed ? <p><small>Email y/o contraseña incorrectos!</small></p> : null}
       </div>
     </section>
   );
@@ -75,8 +91,21 @@ export default function Login(props) {
         setToken(data.token);
       })
       .catch((err) => {
-        // console.log(err);
-        err.json().then(console.log);
+        setLoginFailed(true);
       });
+  }
+
+  // Function to check the email format
+  function emailInputCheck(event) {
+    let email = event.target.value;
+    setEmailInputCorrect( EmailValidator.validate(email) )
+  }
+
+  // Validate the form data
+  function validateForm() {
+    return (
+      EmailValidator.validate(loginInput.email) &&
+      loginInput.password.length > 0
+    )
   }
 }
