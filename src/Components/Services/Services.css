@@ -1,5 +1,5 @@
 .service {
-    padding-top: 10px;
+    padding-top: 5px;
 }
 .servicesSection {
     margin: 0 20px;
@@ -7,8 +7,10 @@
 
 .servicesSection .service{
     width: 95%;
-    background-color: #4D60C0;
+    background-color: #615CC3;
     transition: all .4s ease-in-out;
+    border-radius: 10px;
+    box-shadow: 1px 8px 10px -3px rgba(0,0,0,0.6);
 }
 
 @media screen and (max-width:1400px){

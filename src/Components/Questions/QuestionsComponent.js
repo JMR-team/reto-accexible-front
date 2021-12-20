@@ -44,7 +44,7 @@ function QuestionsComponent(props) {
                     <div className="quiz-modal-footer">
                         <div className="quiz-modal-progress-controls">
                             <p className="quiz-modal-progress-current">{`${questionIndex <= questions.length - 1 ? questionIndex + 1 : ""} / ${questions.length}`}</p>
-                            <button className="quiz-modal-btn" onClick={ okButtonIsActive ? () => nextQuestion() : null}> Síguiente </button>
+                            <button className={"quiz-modal-btn" + (okButtonIsActive ? "" : " quiz-modal-btn-disabled")} onClick={ okButtonIsActive ? () => nextQuestion() : null}> Síguiente </button>
                         </div>
                     </div>
                 </div>

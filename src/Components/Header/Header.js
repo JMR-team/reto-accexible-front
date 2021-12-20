@@ -9,7 +9,7 @@ export default function Header() {
     <>
       <div className="header">
         <img className="headerImg"
-            src="https://i.pinimg.com/736x/f3/64/78/f36478c81a18be460d5c007d99c24b06.jpg"
+            src="https://images-ext-2.discordapp.net/external/gUyG6SbaJrMWT5_P1TQuNvFpXzibV569HqBRvW4HRBA/https/i.imgur.com/IGWfqHIh.jpg"
             alt="imagen del Header"
         />
       </div>

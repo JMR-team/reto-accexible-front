@@ -41,6 +41,7 @@ nav {
   text-decoration: none;
   font-size: 1.1em;
   color: #4D60C0;
+  border-radius: 10px;
   font-weight: 500;
   font-family: Roboto;
   padding: 5px 10px;
@@ -53,7 +54,9 @@ nav {
   border-radius: 2px;
   color: #fff;
   transition: all 0.5s ease-in-out;
+  border-radius: 10px;
 }
+
 
 @media screen and (max-width: 800px) {
   .logo {
@@ -77,6 +80,7 @@ nav {
     height: 100vh;
     position: absolute;
     background: #fff;
+    overflow-x: hidden;
     right: 0;
     top: 50px;
     transition: all 0.5s ease-in-out;
@@ -96,6 +100,7 @@ nav {
     width: 100px;
     display: block;
     margin: auto;
+    
   }
 
   .menu-list.close {

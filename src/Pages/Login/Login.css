@@ -48,7 +48,6 @@
     background-color: #fff;
     text-transform: uppercase;
     font-weight: 500;
-    border: none;
     color: #2d42af;
     border-radius: 10px;
     padding: 10px;
@@ -61,5 +60,6 @@
 .loginButton:hover {
     background-color: #2d42af;
     color: #fff;
+    border: 2px solid #fff;
 }
 
