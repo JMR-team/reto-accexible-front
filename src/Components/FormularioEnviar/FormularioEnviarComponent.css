@@ -56,5 +56,6 @@
 .loginButton:hover {
     background-color: #2d42af;
     color: #fff;
+    border: 2px solid #fff;
 }
 

@@ -1,5 +1,5 @@
 .containerDiv {
-    height: calc(100vh - 55px);
+    height: calc(100vh - 50px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -23,9 +23,11 @@
     background-color: #fff;
     padding: 0.75rem 2rem;
     border-radius: 0.375rem;
-    color: rgb(18, 21, 64);
+    border: 2px solid #fff;
+    color: #fff;
+    background-color: #323bc0;
+    text-transform: uppercase;
     font-weight: 700;
-    border: none;
     cursor: pointer;
     font-family: "Cabin", sans-serif;
     font-size: 1rem;
@@ -33,9 +35,12 @@
 }
 
 .react-chatbot-kit-chat-header {
-    background-image: url('./assets/accexible_background_pattern.jpeg');
+    background-color: #fff;
     background-size: cover;
-    color: white;
+    color: #4D60C0;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 1.1rem;
 }
 
 .react-chatbot-kit-chat-bot-avatar-container {
@@ -55,6 +60,7 @@
 }
 
 .react-chatbot-kit-chat-bot-message {
+    font-size: 0.9rem;
     background-color: #fff;
     color: rgb(18, 21, 64);
     width: 100%;
@@ -65,11 +71,13 @@
     top: 23px;
 }
 
-.react-chatbot-kit-user-message-arrow {
-    border-right: 8px solid #fff;
-    top: 23px;
+.react-chatbot-kit-user-chat-message {
+    font-size: 0.9rem;
 }
 
+.react-chatbot-kit-user-chat-message-arrow {
+    top: 25px;
+}
 
 .react-chatbot-kit-chat-bot-avatar-letter {
     display: none;
@@ -80,13 +88,16 @@
     box-shadow: 10px 10px 20px black;
     background-color: transparent;
     border-radius: 10px;
-    /* overflow: hidden; */
-    /* overflow-x: hidden;
-    overflow-y: hidden; */
+}
+
+@media (max-width: 767px) {
+    .react-chatbot-kit-chat-container {
+        width: 100vw;
+    }
 }
 
 .react-chatbot-kit-chat-inner-container {
-    background-color: rgb(18, 21, 64);
+    background-color: #616EC8;
     background-size: cover;
     border-radius: inherit;
 }
