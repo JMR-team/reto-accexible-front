@@ -1,5 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import FullCalendar from '@fullcalendar/react' // must go before plugins
+import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
+
+
+const resultsColors = [
+  { threshold: 5, color: "#9999FF" },
+  { threshold: 10, color: "#5555FF" },
+  { threshold: 15, color: "#0000FF" },
+];
 
 
 export default function PersonalPage(props) {
@@ -12,6 +21,9 @@ export default function PersonalPage(props) {
     // Navigation hook
     let navigate = useNavigate();
 
+    // Reference Hooks
+    const calendarRef = useRef(null);
+
     // Effect hooks
     useEffect(()=>{
         // navigate to home if the user is not logged in
@@ -22,19 +34,47 @@ export default function PersonalPage(props) {
     },[])
 
     useEffect(()=>{
-        console.log(user);
-        console.log(userTestsResults);
-    },[user,userTestsResults])
+        if (userTestsResults != undefined){
+            const calendarAPI = calendarRef.current.getApi();
+            console.log(calendarAPI.getEvents());
+        }
+    },[userTestsResults])
 
     return (
-        <>
-        <h1>Esta es la página personal</h1>
-        </>
-    )
+      <>
+        {userTestsResults != undefined ? (
+          <FullCalendar
+            initialView="dayGridMonth"
+            plugins={[dayGridPlugin]}
+            ref={calendarRef}
+            events={mapUserResultsToCalendarEvents()}
+            displayEventTime={true}
+            eventDisplay="block"
+            eventTimeFormat={{
+                hour: "2-digit",
+                minute: "2-digit",
+                hour12: false,
+            }}
+          />
+        ) : null}
+      </>
+    );
 
 
 
     // Functions
+    function mapUserResultsToCalendarEvents() {
+        return userTestsResults.map(
+          ({ dateTime, testScore, chatScore, totalScore }) => ({
+            title:'',
+            start: dateTime,
+            testScore,
+            chatScore,
+            totalScore,
+            color:resultsColors.find(({threshold})=>totalScore<=threshold).color,
+          })
+        );
+    }
 
     // Obtain user info from the backend
     function fetchUser() {
