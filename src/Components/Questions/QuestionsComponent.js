@@ -86,7 +86,7 @@ function QuestionsComponent(props) {
     }
 
     function getQuestions() {
-        let response = fetch(`http://localhost:9000/api/test-questions`)
+        let response = fetch(`/api/test-questions`)
             .then(responseFetch => responseFetch.json())
             .then(respuestaJSON => respuestaJSON)
         return response;
