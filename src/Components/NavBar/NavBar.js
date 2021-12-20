@@ -7,15 +7,7 @@ export default function Navbar (){
   const navigate = useNavigate();
   const [userIsLogged,setUserIsLogged] = useState( localStorage.getItem('token') !=null )
   const [clicked, setClicked] = useState(false);
-  const menuList = MenuList.filter(({showAlways})=>showAlways || !userIsLogged).map(({ url, title }, index) => {
-    return (
-      <li key={index}>
-        <NavLink exact to={url} activeClassName="active">
-          {title}
-        </NavLink>
-      </li>
-    );
-  });
+  
 
   useEffect(() => {
     if (localStorage.getItem("token") == null) {
@@ -34,6 +26,16 @@ export default function Navbar (){
     localStorage.clear();
     navigate('/');
   }
+
+  const menuList = MenuList.filter(({showAlways})=>showAlways || !userIsLogged).map(({ url, title }, index) => {
+    return (
+      <li key={index}>
+        <NavLink onClick={handleClick} exact to={url} activeClassName="active">
+          {title}
+        </NavLink>
+      </li>
+    );
+  });
 
   return (
     <nav>
