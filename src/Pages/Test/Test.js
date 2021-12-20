@@ -63,7 +63,7 @@ export default function Test(props) {
 
     // Function to send the results to the API if the user is logged
     function sendResultsLoggedUser() {
-        fetch(`http://localhost:9000/api/results`, {
+        fetch(`/api/results`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
