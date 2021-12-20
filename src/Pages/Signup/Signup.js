@@ -29,7 +29,7 @@ export default function Signup(props) {
   return (
     <section className="signRegisterSection">
       <div className="signRegisterContainer">
-        <h2>Registrar nuevo usuario</h2>
+        <h2>Registrar nuevo usuario:</h2>
         {/* Nombre y apellidos */}
         <div className="signForm">
           <input className="signInput"
