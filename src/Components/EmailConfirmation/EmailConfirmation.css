@@ -19,6 +19,7 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    border-radius: 10px;
 }
 
 .emailContainer p {

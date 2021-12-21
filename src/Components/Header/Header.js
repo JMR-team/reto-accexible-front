@@ -29,7 +29,7 @@ export default function Header() {
             text={'Sistema de prueba para la detección de síntomas depresivos, cuadros de ansiedad e indicativos de necesidad de atención psicológica.'}
             />
             <Services  image={bootcamp} title={'EQUIPO BREATHE'} 
-            text={'En el reto hemos participado las siguientes personas: Joseba Garcia, Miguel y Roque Carrillo (editar esto ahora)'}
+            text={['Reto realizado por: ', <br/>, <br/>, '- Joseba Iñaki García Barrenengoa', <br/>, '- Miguel Ángel Simón Martínez', <br/>, '- Roque Carrillo Martínez']}
             />
         </div>
     </>
