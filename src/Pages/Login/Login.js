@@ -49,7 +49,7 @@ export default function Login(props) {
               setLoginInput({ ...loginInput, email: e.target.value });
             }}
           />
-          {emailInputCorrect ? null : <p><small>Formato de correo electrónico incorrecto</small></p>}
+          {emailInputCorrect ? null : <p className="emailError"><small>Formato de correo electrónico incorrecto</small></p>}
         </div>
         <div className="loginForm">
           <input className="loginInput"

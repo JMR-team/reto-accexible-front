@@ -16,8 +16,6 @@ import Signup from "../Pages/Signup/Signup";
 import Test from '../Pages/Test/Test'
 import PersonalPage from "../Pages/PersonalPage/PersonalPage";
 
-
-
 function App() {
   return (
     <div>
