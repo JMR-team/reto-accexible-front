@@ -53,12 +53,25 @@ nav {
 .menu-list li a:hover,
 .menu-list li a.active {
   background-color: #4D60C0;
-  border-radius: 2px;
   color: #fff;
   transition: all 0.5s ease-in-out;
   border-radius: 10px;
 }
 
+.closeButton {
+  border: none;
+  background-color: #4D60C0;
+  border-radius: 10px;
+  padding: 7px 10px;
+  margin-left: 20px;
+}
+
+.closeButton::after {
+  content: "\f2f5"; 
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900; 
+  color: #fff;
+}
 
 @media screen and (max-width: 800px) {
   .logo {
