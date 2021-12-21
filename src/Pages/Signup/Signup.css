@@ -53,6 +53,7 @@
 }
 
 .signButton:disabled{
-    background-color: grey;
+    background-color: #2d42af;
+    color: #fff;
     cursor: not-allowed;
 }

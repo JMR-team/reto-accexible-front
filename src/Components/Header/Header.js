@@ -14,7 +14,7 @@ export default function Header() {
         />
       </div>
       <div className = "containerHeader" >
-        <h1 className = "titleHeader">Salud Mental Accesible Para Todos</h1>
+        <h1 className = "titleHeader">Salud Mental Accesible Para Tod@s</h1>
           <br/>
           <div className = "containerButton">
             <Link className="link" to="/test-ansiedad">

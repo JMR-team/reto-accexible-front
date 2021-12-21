@@ -1,0 +1,70 @@
+
+.footer{
+    margin-top: 25px;
+    width: 100%;
+    background-color: #e7e4e4;
+}
+.footer .containerFooter {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap:50px;
+    padding: 25px 0px;
+}
+.footer .containerFooter .box figure{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footer .containerFooter .box figure img{
+    width: 250px;
+}
+.footer .containerFooter .box h2{
+    color: #5668C3;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+    font-size: 20px;
+}
+.footer .containerFooter .box p{
+    color: #5668C3;
+    margin-bottom: 10px;
+}
+.footer .containerFooter .social a{
+    display: inline-block;
+    text-decoration: none;
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    border-radius: 10px;
+    color: #fff;
+    margin-right: 10px;
+    background-color: #645FC3;
+    text-align: center;
+    transition: all 300ms ease;
+}
+.footer .containerFooter .social a:hover{
+    color: #bbbfd6;
+}
+
+.footer .containerInfoFooter {
+    background-color: #645FC3;
+    padding: 15px 10px;
+    text-align: center;
+    color: #fff;
+}
+.footer .containerInfoFooter small{
+    font-size: 15px;
+}
+@media screen and (max-width:800px){
+    .footer .containerFooter {
+        width: 90%;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap:30px;
+        padding: 35px 0px;
+        text-align: center;
+    }
+}
