@@ -27,6 +27,18 @@
     height: 80vh;
 }
 
+.fc .fc-toolbar-title {
+    color: #4D60C0;
+}
+
+.fc .fc-col-header-cell-cushion {
+    color: #4D60C0;
+}
+
+.fc .fc-daygrid-day-number {
+    color: #4D60C0;
+}
+
 .containerDonut {
     display: flex;
     justify-content: center;

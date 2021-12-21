@@ -97,6 +97,7 @@ export default function Signup(props) {
         </div>
         <div className="signForm">
           <button
+            type="button"
             className="signButton"
             disabled={!submitButtonIsActive}
             onClick={register}
