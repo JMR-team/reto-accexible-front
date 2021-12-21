@@ -1,0 +1,11 @@
+.results {
+    color: #4D60C0;
+}
+
+.swal-button:not([disabled]) {
+    background-color: #4D60C0;
+}
+
+.swal-button:not([disabled]):hover {
+    background-color:#4D60C0;
+}

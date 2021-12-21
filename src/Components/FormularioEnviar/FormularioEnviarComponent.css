@@ -48,13 +48,13 @@
     text-transform: uppercase;
     font-weight: 500;
     border: none;
-    color: #2d42af;
+    color: #4D60C0;
     border-radius: 10px;
     padding: 10px;
 }
 
 .loginButton:hover {
-    background-color: #2d42af;
+    background-color: #4D60C0;
     color: #fff;
     border: 2px solid #fff;
 }

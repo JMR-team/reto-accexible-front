@@ -63,7 +63,7 @@ export default function Login(props) {
           <p><small></small></p>
         </div>
         <div className="loginForm">
-          <button className="loginButton" disabled={!submitButtonIsActive} onClick={login}>Iniciar sesión</button>
+          <button className="loginButton" type="button" disabled={!submitButtonIsActive} onClick={login}>Iniciar sesión</button>
         </div>
         {loginFailed ? <p className="emailError"><small>Email y/o contraseña incorrectos!</small></p> : null}
       </div>

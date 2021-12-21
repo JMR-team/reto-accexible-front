@@ -42,18 +42,18 @@
     text-transform: uppercase;
     font-weight: 500;
     border: 2px solid #fff;
-    color: #2d42af;
+    color: #4D60C0;
     border-radius: 10px;
     padding: 10px;
 }
 
 .signButton:hover {
-    background-color: #2d42af;
+    background-color: #4D60C0;
     color: #fff;
 }
 
 .signButton:disabled{
-    background-color: #2d42af;
+    background-color: #4D60C0;
     color: #fff;
     cursor: not-allowed;
 }
