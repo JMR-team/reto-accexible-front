@@ -32,7 +32,7 @@ export default function Footer() {
             </div>
         </div>
         <div className="containerInfoFooter">
-            <small>&copy; 2021 <b>Code4Jobs</b> - Proyecto De Empresa para AcceXible.</small>
+            <small>&copy; 2021 <b>Code4Jobs</b> - Reto De Empresa AcceXible.</small>
         </div>
     </div>
     </>

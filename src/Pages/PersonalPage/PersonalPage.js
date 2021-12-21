@@ -1,4 +1,5 @@
 import ReactDOM from "react-dom";
+import "./PersonalPage.css"
 import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -52,24 +53,30 @@ export default function PersonalPage(props) {
     <>
       {userTestsResults != undefined ? (
         <>
-          <section>
-            <FullCalendar
-              initialView="dayGridMonth"
-              plugins={[dayGridPlugin]}
-              ref={calendarRef}
-              events={mapUserResultsToCalendarEvents()}
-              displayEventTime={true}
-              eventDisplay="block"
-              eventTimeFormat={{
-                hour: "2-digit",
-                minute: "2-digit",
-                hour12: false,
-              }}
-              eventClick={calendarEventClick}
-            />
-          </section>
-          <section>
-            <Doughnut data={dataForDonutChart()} />
+        <section className="containerGlobal">
+          <section className="containerCalendar">
+            <div class="calendar">
+              <FullCalendar
+                initialView="dayGridMonth"
+                plugins={[dayGridPlugin]}
+                ref={calendarRef}
+                events={mapUserResultsToCalendarEvents()}
+                displayEventTime={true}
+                eventDisplay="block"
+                eventTimeFormat={{
+                  hour: "2-digit",
+                  minute: "2-digit",
+                  hour12: false,
+                }}
+                eventClick={calendarEventClick}
+              />
+              </div>
+            </section>
+            <section className="containerDonut">
+              <div className="donut">
+                <Doughnut data={dataForDonutChart()} />
+              </div>
+            </section>
           </section>
         </>
       ) : null}
