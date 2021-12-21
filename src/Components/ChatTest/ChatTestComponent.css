@@ -66,6 +66,10 @@
     width: 100%;
 }
 
+.react-chatbot-kit-chat-message-container {
+    overflow-x: hidden;
+}
+
 .react-chatbot-kit-chat-bot-message-arrow {
     border-right: 8px solid #fff;
     top: 23px;
@@ -92,7 +96,9 @@
 
 @media (max-width: 767px) {
     .react-chatbot-kit-chat-container {
-        width: 100vw;
+        width: 90vw;
+        height: 85vh;
+        background-color: #616EC8;
     }
 }
 
