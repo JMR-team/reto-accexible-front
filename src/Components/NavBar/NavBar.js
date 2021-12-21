@@ -54,7 +54,7 @@ export default function Navbar (){
       </div>
       <ul className={clicked ? "menu-list" : "menu-list close"}>
         {menuList}
-        {userIsLogged ? <button onClick={logout}>cerrar sesión</button> : null}
+        {userIsLogged ? <button className="closeButton" onClick={logout}></button> : null}
       </ul>
     </nav>
   );

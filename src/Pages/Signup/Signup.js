@@ -78,7 +78,7 @@ export default function Signup(props) {
             }}
           />
           {emailInputCorrect ? null : (
-            <p>
+            <p className="emailError">
               <small>Formato de correo electrónico incorrecto</small>
             </p>
           )}
@@ -105,7 +105,7 @@ export default function Signup(props) {
           </button>
         </div>
         {signupFailed ? (
-          <p>
+          <p className="emailError">
             <small>
               La dirección de correo ya está siendo usada por otro usuario.
             </small>
