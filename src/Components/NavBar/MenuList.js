@@ -10,6 +10,11 @@ export const MenuList = [
     showAlways:true,
   },
   {
+    title:'Historial',
+    url:'/dashboard',
+    showOnlyForLogged:true
+  },
+  {
     title: "Login",
     url: "/login",
   },
