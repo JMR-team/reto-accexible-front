@@ -1,0 +1,48 @@
+.containerGlobal {
+    background-image: url("../../Components/ChatTest/assets/accexible_background_pattern.jpeg");
+    background-size: cover; 
+}
+
+.containerCalendar {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+.calendar {
+    margin: 30px 0 0 0;
+    width: 85vh;
+    height: 85vh;
+    background-color: #fff;
+    padding: 10px;
+    box-shadow: 1px 8px 10px -3px rgba(0,0,0,0.6);
+}
+
+.fc .fc-toolbar.fc-header-toolbar {
+    margin: 15px;
+}
+
+.fc {
+    height: 80vh;
+}
+
+.containerDonut {
+    display: flex;
+    justify-content: center;
+    background-color: #fff;
+    width: 100%;
+}
+
+.donut {
+    margin: 30px 0;
+    width: 350px;
+    height: 350px; 
+}
+
+@media screen and (max-width:750px){
+    .calendar {
+        width: 65vh;
+        height: 85vh;
+    }
+}
