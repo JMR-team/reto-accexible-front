@@ -1,10 +1,14 @@
 import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+
 import FullCalendar from '@fullcalendar/react' // must go before plugins
 import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
 
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
+
+import swal from "sweetalert";
+
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -63,6 +67,7 @@ export default function PersonalPage(props) {
                   minute: "2-digit",
                   hour12: false,
                 }}
+                eventClick={calendarEventClick}
               />
             </section>
             <section>
@@ -87,6 +92,13 @@ export default function PersonalPage(props) {
             color:resultsColors.find(({threshold})=>totalScore<=threshold).color,
           })
         );
+    }
+
+    function calendarEventClick( eventClickInfo ) {
+      swal({
+        text: `${eventClickInfo.event.extendedProps.totalScore}`,
+      });
+      // alert(eventClickInfo.event.extendedProps.totalScore);
     }
 
     // Obtain user info from the backend
