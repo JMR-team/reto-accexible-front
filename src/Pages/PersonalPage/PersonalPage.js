@@ -3,11 +3,16 @@ import { useNavigate } from "react-router-dom";
 import FullCalendar from '@fullcalendar/react' // must go before plugins
 import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
 
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import { Doughnut } from "react-chartjs-2";
+
+ChartJS.register(ArcElement, Tooltip, Legend);
+
 
 const resultsColors = [
-  { threshold: 5, color: "#9999FF" },
-  { threshold: 10, color: "#5555FF" },
-  { threshold: 15, color: "#0000FF" },
+  { id: 0, threshold:  5, color: "#9999FF"  },
+  { id: 1, threshold: 10, color: "#5555FF" },
+  { id: 2, threshold: 15, color: "#0000FF" },
 ];
 
 
@@ -37,25 +42,33 @@ export default function PersonalPage(props) {
         if (userTestsResults != undefined){
             const calendarAPI = calendarRef.current.getApi();
             console.log(calendarAPI.getEvents());
+            dataForDonutChart();
         }
     },[userTestsResults])
 
     return (
       <>
         {userTestsResults != undefined ? (
-          <FullCalendar
-            initialView="dayGridMonth"
-            plugins={[dayGridPlugin]}
-            ref={calendarRef}
-            events={mapUserResultsToCalendarEvents()}
-            displayEventTime={true}
-            eventDisplay="block"
-            eventTimeFormat={{
-                hour: "2-digit",
-                minute: "2-digit",
-                hour12: false,
-            }}
-          />
+          <>
+            <section>
+              <FullCalendar
+                initialView="dayGridMonth"
+                plugins={[dayGridPlugin]}
+                ref={calendarRef}
+                events={mapUserResultsToCalendarEvents()}
+                displayEventTime={true}
+                eventDisplay="block"
+                eventTimeFormat={{
+                  hour: "2-digit",
+                  minute: "2-digit",
+                  hour12: false,
+                }}
+              />
+            </section>
+            <section>
+              <Doughnut data={dataForDonutChart()} />
+            </section>
+          </>
         ) : null}
       </>
     );
@@ -107,5 +120,32 @@ export default function PersonalPage(props) {
         .then(data => {
             setUserTestsresults(data);
         });
+    }
+
+    function dataForDonutChart() {
+      let rangeCounts = [0,0,0];
+      
+      userTestsResults.forEach(({totalScore})=>{
+        // console.log(totalScore);
+        let index = resultsColors.findIndex(({ threshold }) => totalScore <= threshold);
+        if (index>=0) rangeCounts[index]+=1
+      })
+      // console.log(rangeCounts);
+      let data = {
+        labels: [
+          "Signos depresivos leves",
+          "Signos depresivos moderados",
+          "Signos depresivos severos",
+        ],
+        datasets: [
+          {
+            label: "Nivel de ansiedad/depresión",
+            data: rangeCounts,
+            backgroundColor: resultsColors.map(({color})=>color),
+            borderWidth: 1,
+          },
+        ],
+      };
+      return data;
     }
 }
