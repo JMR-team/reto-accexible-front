@@ -21,7 +21,7 @@ function FormularioEnviarComponent(props) {
         <>
         <section className="formSection">
             <div className="formContainer">
-            <h2>Formulario</h2>
+            <h2>Recibe tus Resultados Por Email</h2>
                 <div className="loginForm">
                     <input className="loginInput" type="email" placeholder='Email' onChange={cambiarEmail} />
                     <br />

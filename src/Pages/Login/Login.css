@@ -57,3 +57,12 @@
     border: 2px solid #fff;
 }
 
+.loginRegisterContainer .emailError {
+    margin-top: 10px;
+    text-align: center;
+    width: 350px;
+    height: 20px;
+    background-color: #fff;
+    color: #2d42af;
+}
+
