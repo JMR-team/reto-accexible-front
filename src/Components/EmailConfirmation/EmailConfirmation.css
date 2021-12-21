@@ -39,7 +39,7 @@
     width: 250px;
     margin-top: 20px;
     cursor: pointer;
-    background-color: #2d42af;
+    background-color: #4D60C0;
     text-transform: uppercase;
     font-weight: 500;
     color: #fff;
@@ -48,7 +48,7 @@
 }
 
 .buttonConfirmation:hover {
-    background-color: #4b64dd;
+    background-color: #4D60C0;
     color: #fff;
 }
 

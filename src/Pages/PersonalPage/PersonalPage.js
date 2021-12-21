@@ -155,8 +155,8 @@ export default function PersonalPage(props) {
     });
     let data = {
       labels: [
+        "Sin signos de depresión",
         "Signos depresivos leves",
-        "Signos depresivos moderados",
         "Signos depresivos severos",
       ],
       datasets: [
