@@ -27,7 +27,9 @@ export default function Navbar (){
     navigate('/');
   }
 
-  const menuList = MenuList.filter(({showAlways})=>showAlways || !userIsLogged).map(({ url, title }, index) => {
+  const menuList = MenuList.filter(
+    ({showAlways,showOnlyForLogged}) => showAlways || (userIsLogged && showOnlyForLogged) || (!userIsLogged && !showOnlyForLogged)
+    ).map(({ url, title }, index) => {
     return (
       <li key={index}>
         <NavLink onClick={handleClick} exact to={url} activeClassName="active">
