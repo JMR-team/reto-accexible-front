@@ -1,4 +1,5 @@
 import './Footer.css';
+import AccexibleLogo from '../../assets/images/accexible-logo.png'
 
 export default function Footer() {
     return (
@@ -8,7 +9,7 @@ export default function Footer() {
             <div className="box">
                 <figure>
                     <img
-                        src="https://accexible.com/static/media/accexible_logo.42a306b1.png"
+                        src={AccexibleLogo}
                         alt="logo AcceXible"
                     />
                 </figure>

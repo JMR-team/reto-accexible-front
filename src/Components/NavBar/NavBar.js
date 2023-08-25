@@ -2,6 +2,7 @@ import React, { useState , useEffect} from "react";
 import { NavLink, Link, useNavigate } from "react-router-dom";
 import { MenuList } from "./MenuList";
 import "./NavBar.css";
+import AccesibleLogo from "../../assets/images/accexible-logo.png";
 
 export default function Navbar (){
   const navigate = useNavigate();
@@ -44,7 +45,7 @@ export default function Navbar (){
       <div className="logo">
         <Link className="link" to="/">
           <img
-            src="https://accexible.com/static/media/accexible_logo.42a306b1.png"
+            src={AccesibleLogo}
             alt="logo AcceXible"
           />
         </Link>

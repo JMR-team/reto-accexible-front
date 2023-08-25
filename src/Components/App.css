@@ -1,18 +1,16 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Roboto;
+  box-sizing: border-box;
+  font-family: Roboto;
 }
 
-html, body {
-    width: 100vw;
-    overflow-x: hidden; 
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  overflow-x: hidden;
 }
 
 main {
-    margin-top: 50px;
+  margin-top: 50px;
 }
-
-
-

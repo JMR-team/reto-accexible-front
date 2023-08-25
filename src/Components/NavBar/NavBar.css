@@ -1,7 +1,8 @@
 nav {
+  align-items: center;
   background: #fff;
-  height: 50px;
-  padding: 0 20px;
+  height: 80px;
+  padding: 10px 20px;
   display: flex;
   justify-content: space-between;
   position: fixed;
@@ -28,7 +29,16 @@ nav {
   transition: all 0.2s ease-in-out;
 }
 
-.logo img{
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo a {
+  display: inline-flex;
+}
+
+.logo img {
   width: 150px;
 }
 
@@ -42,7 +52,7 @@ nav {
 .menu-list li a {
   text-decoration: none;
   font-size: 1.1em;
-  color: #4D60C0;
+  color: #4d60c0;
   border-radius: 10px;
   font-weight: 500;
   font-family: Roboto;
@@ -52,7 +62,7 @@ nav {
 
 .menu-list li a:hover,
 .menu-list li a.active {
-  background-color: #4D60C0;
+  background-color: #4d60c0;
   color: #fff;
   transition: all 0.5s ease-in-out;
   border-radius: 10px;
@@ -60,7 +70,7 @@ nav {
 
 .closeButton {
   border: none;
-  background-color: #4D60C0;
+  background-color: #4d60c0;
   border-radius: 10px;
   padding: 7px 10px;
   margin-left: 10px;
@@ -68,9 +78,9 @@ nav {
 }
 
 .closeButton::after {
-  content: "\f2f5"; 
-  font-family: 'Font Awesome 5 Free';
-  font-weight: 900; 
+  content: "\f2f5";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
   color: #fff;
 }
 
@@ -116,7 +126,6 @@ nav {
     width: 100px;
     display: block;
     margin: auto;
-    
   }
 
   .menu-list.close {
@@ -124,5 +133,3 @@ nav {
     transition: all 0.5s ease-in-out;
   }
 }
-
-
