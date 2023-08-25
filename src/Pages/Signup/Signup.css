@@ -1,0 +1,81 @@
+.signRegisterSection {
+    background-image: url("../../Components/ChatTest/assets/accexible_background_pattern.jpeg");
+    background-size: cover;
+}
+
+.signRegisterContainer {
+    height: calc(100vh - 50px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.signRegisterContainer h2 {
+    color: #fff;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.signForm {
+    color: #fff;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+
+.signForm > label {
+    margin: 10px 0;
+}
+
+.signInput {
+    padding: 10px;
+    background-color: #fff;
+    border: none;
+    border-radius: 10px;
+}
+
+.signButton {
+    margin-top: 20px;
+    cursor: pointer;
+    background-color: #fff;
+    text-transform: uppercase;
+    font-weight: 500;
+    border: 2px solid #fff;
+    color: #4D60C0;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.signButton:hover {
+    background-color: #4D60C0;
+    color: #fff;
+}
+
+.signButton:disabled{
+    background-color: #4D60C0;
+    color: #fff;
+    cursor: not-allowed;
+}
+
+.emailError {
+    position: relative;
+    margin-top: 3px;
+    text-align: center;
+    height: 40px;
+    background-color: #E44E40;
+    color: #fff;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.emailError::before {
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900; 
+    content: "\f071";
+    background-color: #E44E40;
+    color: #fff;
+    padding-right: 5px;
+}
