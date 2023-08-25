@@ -2,6 +2,7 @@
   "name": "reto-accexible-front",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://jmr-team.github.io/reto-accexible-front",
   "dependencies": {
     "@fullcalendar/core": "^5.10.1",
     "@fullcalendar/daygrid": "^5.10.1",
