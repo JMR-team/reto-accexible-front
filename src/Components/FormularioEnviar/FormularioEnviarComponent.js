@@ -38,7 +38,7 @@ function FormularioEnviarComponent(props) {
     )
 
     function EnviarEmail() {
-        fetch(`/api/results`, {
+        fetch(REACT_APP_API_URL+`/api/results`, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"

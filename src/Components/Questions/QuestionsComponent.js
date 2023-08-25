@@ -80,7 +80,7 @@ function QuestionsComponent(props) {
     }
 
     function getQuestions() {
-        let response = fetch(`/api/test-questions`)
+        let response = fetch(REACT_APP_API_URL+`/api/test-questions`)
             .then(responseFetch => responseFetch.json())
             .then(respuestaJSON => respuestaJSON)
         return response;

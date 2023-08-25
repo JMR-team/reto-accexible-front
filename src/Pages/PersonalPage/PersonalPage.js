@@ -114,7 +114,7 @@ export default function PersonalPage(props) {
 
   // Obtain user info from the backend
   function fetchUser() {
-    fetch("/api/users", {
+    fetch(REACT_APP_API_URL+"/api/users", {
       headers: {
         Authorization: `Bearer ${userToken}`,
       },
@@ -130,7 +130,7 @@ export default function PersonalPage(props) {
 
   // Obtain user historic of tests from the backend
   function fetchUserTests() {
-    fetch("/api/results", {
+    fetch(REACT_APP_API_URL+"/api/results", {
       headers: {
         Authorization: `Bearer ${userToken}`,
       },
