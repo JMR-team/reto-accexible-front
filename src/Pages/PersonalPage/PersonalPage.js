@@ -25,7 +25,7 @@ const resultsColors = [
 export default function PersonalPage(props) {
   // State hooks
   let [userToken] = useState(localStorage.getItem("token"));
-  let [user, setUser] = useState(undefined);
+  let [, setUser] = useState(undefined);
   let [userTestsResults, setUserTestsresults] = useState(undefined);
   const [, setSearchParams] = useSearchParams();
 
@@ -42,14 +42,13 @@ export default function PersonalPage(props) {
     // If the user is logged fetch its data from the backend
     fetchUser();
     fetchUserTests();
-  }, []);
+  }, []); // eslint-disable-line
 
   useEffect(() => {
-    if (userTestsResults != undefined) {
-      const calendarAPI = calendarRef.current.getApi();
+    if (!!userTestsResults) {
       dataForDonutChart();
     }
-  }, [userTestsResults]);
+  }, [userTestsResults]); // eslint-disable-line
 
   const onDateRangeChange = (data) => {
     const { end, endStr, start, startStr, timeZone, view } = data;
@@ -66,7 +65,7 @@ export default function PersonalPage(props) {
 
   return (
     <>
-      {userTestsResults != undefined ? (
+      {!!userTestsResults && (
         <>
           <section className="containerGlobal">
             <section className="containerCalendar">
@@ -95,7 +94,7 @@ export default function PersonalPage(props) {
             </section>
           </section>
         </>
-      ) : null}
+      )}
     </>
   );
 
