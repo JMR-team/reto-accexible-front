@@ -5,7 +5,7 @@ export default function StartTestWidget(props) {
   useEffect(() => {
     document.querySelector(".react-chatbot-kit-chat-input").readOnly =
       props.disableChatInput;
-  }, []);
+  }, []); // eslint-disable-line
 
   // render a button that when clicked will start the test
   return (

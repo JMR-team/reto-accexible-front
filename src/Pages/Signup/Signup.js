@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 
 import * as EmailValidator from "email-validator";
 
-import "./Signup.css"
+import "./Signup.css";
 
 export default function Signup(props) {
   // Navigation hook
@@ -11,7 +11,6 @@ export default function Signup(props) {
 
   // State hooks
   let [token, setToken] = useState(localStorage.getItem("token"));
-  let [submitIsActive, setSubmitIsActive] = useState(false);
   let [signUpInput, setSignUpInput] = useState({
     email: "",
     firstName: "",
@@ -30,12 +29,12 @@ export default function Signup(props) {
       localStorage.setItem("token", token);
       navigate("/");
     }
-  }, [token]);
+  }, [token, navigate]);
 
   // Effect hook that will listen to changes in the form data
   useEffect(() => {
     setSubmitButtonIsActive(validateForm());
-  }, [signUpInput]);
+  }, [signUpInput]); // eslint-disable-line
 
   // Render components
   return (
@@ -120,7 +119,7 @@ export default function Signup(props) {
 
   // Register and login to obtain a token for accesing user info
   function register() {
-    fetch((process.env.REACT_APP_API_URL ?? '' )+"/auth/signup", {
+    fetch((process.env.REACT_APP_API_URL ?? "") + "/auth/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(signUpInput),
