@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink, Link, useNavigate } from "react-router-dom";
 import { MenuList } from "./MenuList";
 import "./NavBar.css";
@@ -14,6 +14,15 @@ export default function Navbar() {
   const handleClick = () => {
     setClicked(!clicked);
   };
+
+  const token = localStorage.getItem("token");
+  useEffect(() => {
+    if (token == null) {
+      setUserIsLogged(false);
+    } else {
+      setUserIsLogged(true);
+    }
+  }, [token]);
 
   const logout = () => {
     localStorage.clear();
