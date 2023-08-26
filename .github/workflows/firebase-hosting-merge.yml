@@ -9,6 +9,9 @@ name: Deploy to Firebase Hosting on merge
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://accexible-reto-bbk.web.app
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
