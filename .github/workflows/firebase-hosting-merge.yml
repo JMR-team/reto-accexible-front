@@ -12,6 +12,8 @@ jobs:
     environment:
       name: production
       url: https://accexible-reto-bbk.web.app
+    env:
+      REACT_APP_API_URL: ${{ vars.REACT_APP_API_URL }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
