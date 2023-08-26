@@ -61,7 +61,7 @@ export default function ChatTestComponent(props) {
     // fetch the API for chatbot messages and use them for the
     //  initial configuration of the chatbot.
     function initialChatbotConfig() {
-        fetch(process.env.REACT_APP_API_URL+'/api/chatbot-messages')
+        fetch((process.env.REACT_APP_API_URL ?? '' )+'/api/chatbot-messages')
             .then(response=>{
                 if (response.ok) return response.json()
                 throw response;

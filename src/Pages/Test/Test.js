@@ -63,7 +63,7 @@ export default function Test(props) {
 
     // Function to send the results to the API if the user is logged
     function sendResultsLoggedUser() {
-        fetch(process.env.REACT_APP_API_URL+`/api/results`, {
+        fetch((process.env.REACT_APP_API_URL ?? '' )+`/api/results`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

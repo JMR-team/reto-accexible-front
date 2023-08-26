@@ -120,7 +120,7 @@ export default function Signup(props) {
 
   // Register and login to obtain a token for accesing user info
   function register() {
-    fetch(process.env.REACT_APP_API_URL+"/auth/signup", {
+    fetch((process.env.REACT_APP_API_URL ?? '' )+"/auth/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(signUpInput),
