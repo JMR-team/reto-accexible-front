@@ -1,7 +1,8 @@
 import ReactDOM from "react-dom";
-import "./PersonalPage.css"
+import "./PersonalPage.css";
 import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 import FullCalendar from "@fullcalendar/react"; // must go before plugins
 import dayGridPlugin from "@fullcalendar/daygrid"; // a plugin!
@@ -26,6 +27,7 @@ export default function PersonalPage(props) {
   let [userToken] = useState(localStorage.getItem("token"));
   let [user, setUser] = useState(undefined);
   let [userTestsResults, setUserTestsresults] = useState(undefined);
+  const [, setSearchParams] = useSearchParams();
 
   // Navigation hook
   let navigate = useNavigate();
@@ -49,27 +51,41 @@ export default function PersonalPage(props) {
     }
   }, [userTestsResults]);
 
+  const onDateRangeChange = (data) => {
+    const { end, endStr, start, startStr, timeZone, view } = data;
+    console.log({ end, endStr, start, startStr, timeZone, view });
+    const query = {
+      start_date: start.toISOString(),
+      startStr,
+      end_date: end.toISOString(),
+      endStr,
+    };
+    console.log(query);
+    setSearchParams(query);
+  };
+
   return (
     <>
       {userTestsResults != undefined ? (
         <>
-        <section className="containerGlobal">
-          <section className="containerCalendar">
-            <div class="calendar">
-              <FullCalendar
-                initialView="dayGridMonth"
-                plugins={[dayGridPlugin]}
-                ref={calendarRef}
-                events={mapUserResultsToCalendarEvents()}
-                displayEventTime={true}
-                eventDisplay="block"
-                eventTimeFormat={{
-                  hour: "2-digit",
-                  minute: "2-digit",
-                  hour12: false,
-                }}
-                eventClick={calendarEventClick}
-              />
+          <section className="containerGlobal">
+            <section className="containerCalendar">
+              <div class="calendar">
+                <FullCalendar
+                  datesSet={onDateRangeChange}
+                  initialView="dayGridMonth"
+                  plugins={[dayGridPlugin]}
+                  ref={calendarRef}
+                  events={mapUserResultsToCalendarEvents()}
+                  displayEventTime={true}
+                  eventDisplay="block"
+                  eventTimeFormat={{
+                    hour: "2-digit",
+                    minute: "2-digit",
+                    hour12: false,
+                  }}
+                  eventClick={calendarEventClick}
+                />
               </div>
             </section>
             <section className="containerDonut">
@@ -114,7 +130,7 @@ export default function PersonalPage(props) {
 
   // Obtain user info from the backend
   function fetchUser() {
-    fetch((process.env.REACT_APP_API_URL ?? '' )+"/api/users", {
+    fetch((process.env.REACT_APP_API_URL ?? "") + "/api/users", {
       headers: {
         Authorization: `Bearer ${userToken}`,
       },
@@ -130,7 +146,7 @@ export default function PersonalPage(props) {
 
   // Obtain user historic of tests from the backend
   function fetchUserTests() {
-    fetch((process.env.REACT_APP_API_URL ?? '' )+"/api/results", {
+    fetch((process.env.REACT_APP_API_URL ?? "") + "/api/results", {
       headers: {
         Authorization: `Bearer ${userToken}`,
       },
